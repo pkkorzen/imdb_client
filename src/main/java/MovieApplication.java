@@ -1,5 +1,5 @@
-import model.MovieTitle;
-import model.SearchResultTitle;
+import dto.MovieDTO;
+import dto.SearchResultTitleDTO;
 import service.MovieService;
 import service.impl.IMDBService;
 
@@ -15,12 +15,12 @@ public class MovieApplication {
         String searchExpression = scanner.next();
         MovieService movieService = new IMDBService();
         try {
-            List<SearchResultTitle> titlesFound = movieService.findByExpression(searchExpression);
-            for (SearchResultTitle title : titlesFound) {
-                MovieTitle movieTitle = movieService.findById(title.getId());
-                System.out.println(movieTitle.getTitle());
-                System.out.println(movieTitle.getYear());
-                System.out.println(movieTitle.getPlot());
+            List<SearchResultTitleDTO> titlesFound = movieService.findByExpression(searchExpression);
+            for (SearchResultTitleDTO title : titlesFound) {
+                MovieDTO movie = movieService.findById(title.getId());
+                System.out.println(movie.getTitle());
+                System.out.println(movie.getYear());
+                System.out.println(movie.getPlot());
                 System.out.println("-------------------------------------------------------------");
             }
         } catch (IOException e) {

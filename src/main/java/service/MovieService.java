@@ -1,14 +1,14 @@
 package service;
 
-import model.MovieTitle;
-import model.SearchResultTitle;
+import dto.MovieDTO;
+import dto.SearchResultTitleDTO;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface MovieService {
 
-    List<SearchResultTitle> findByExpression(String expression) throws IOException;
-    MovieTitle findById (String id) throws IOException;
+    List<SearchResultTitleDTO> findByExpression(String expression) throws IOException;
+    MovieDTO findById (String id) throws IOException;
 
 }

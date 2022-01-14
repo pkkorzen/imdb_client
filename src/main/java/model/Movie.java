@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MovieTitle {
+public class Movie {
 
     @SerializedName("id")
     @Expose
@@ -54,19 +54,19 @@ public class MovieTitle {
     private String directors;
     @SerializedName("directorList")
     @Expose
-    private List<Director> directorList = null;
+    private List<Person> directorList = null;
     @SerializedName("writers")
     @Expose
     private String writers;
     @SerializedName("writerList")
     @Expose
-    private List<Writer> writerList = null;
+    private List<Person> writerList = null;
     @SerializedName("stars")
     @Expose
     private String stars;
     @SerializedName("starList")
     @Expose
-    private List<Star> starList = null;
+    private List<Person> starList = null;
     @SerializedName("actorList")
     @Expose
     private List<Actor> actorList = null;
@@ -269,11 +269,11 @@ public class MovieTitle {
         this.directors = directors;
     }
 
-    public List<Director> getDirectorList() {
+    public List<Person> getDirectorList() {
         return directorList;
     }
 
-    public void setDirectorList(List<Director> directorList) {
+    public void setDirectorList(List<Person> directorList) {
         this.directorList = directorList;
     }
 
@@ -285,11 +285,11 @@ public class MovieTitle {
         this.writers = writers;
     }
 
-    public List<Writer> getWriterList() {
+    public List<Person> getWriterList() {
         return writerList;
     }
 
-    public void setWriterList(List<Writer> writerList) {
+    public void setWriterList(List<Person> writerList) {
         this.writerList = writerList;
     }
 
@@ -301,11 +301,11 @@ public class MovieTitle {
         this.stars = stars;
     }
 
-    public List<Star> getStarList() {
+    public List<Person> getStarList() {
         return starList;
     }
 
-    public void setStarList(List<Star> starList) {
+    public void setStarList(List<Person> starList) {
         this.starList = starList;
     }
 
