@@ -50,4 +50,9 @@ public class Actor {
         this.asCharacter = asCharacter;
     }
 
+    @Override
+    public String toString() {
+        return "\n" + name +
+                ": " + asCharacter;
+    }
 }

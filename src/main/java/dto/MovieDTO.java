@@ -107,4 +107,19 @@ public class MovieDTO {
     public void setPlot(String plot) {
         this.plot = plot;
     }
+
+    @Override
+    public String toString() {
+        return "Title: " + title +
+                "\n" + "Year: " + year +
+                "\n" + "Runtime: " + runtime +
+                "\n" + "Genres: " + genreList.toString().replace("[", "").replace("]", "") +
+                "\n" + "IMDbRating: " + imDbRating +
+                "\n" + "MetacriticRating: " + metacriticRating +
+                "\n" + "Directors: " + directors.toString().replace("[", "").replace("]", "") +
+                "\n" + "Countries: " + countries.toString().replace("[", "").replace("]", "") +
+                "\n\n" + "Plot:\n" + plot +
+                "\n\n" + "Actors: " + actors.toString().replace("[", "").replace("]", "");
+
+    }
 }

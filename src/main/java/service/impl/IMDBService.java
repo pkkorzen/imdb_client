@@ -17,6 +17,7 @@ import java.util.List;
 
 public class IMDBService implements MovieService {
 
+    //could be moved to properties
     private final String apiKey = "";
     private final String movieExpressionSearchAddress = "https://imdb-api.com/en/API/SearchMovie/" + apiKey + "/";
     private final String movieTitleSearchAddress = "https://imdb-api.com/en/API/Title/" + apiKey + "/";
