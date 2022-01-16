@@ -8,6 +8,7 @@ import model.Movie;
 import model.SearchResult;
 import model.SearchResultTitle;
 import service.MovieService;
+import utils.PropertiesLoader;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,16 +18,17 @@ import java.util.List;
 
 public class IMDBService implements MovieService {
 
-    //could be moved to properties
-    private final String apiKey = "";
-    private final String movieExpressionSearchAddress = "https://imdb-api.com/en/API/SearchMovie/" + apiKey + "/";
-    private final String movieTitleSearchAddress = "https://imdb-api.com/en/API/Title/" + apiKey + "/";
     private InputStreamReader reader;
     private MovieDTOConverter movieDTOConverter;
 
     @Override
     public List<SearchResultTitleDTO> findByExpression(String expression) throws IOException {
-        URL expressionURL = new URL(movieExpressionSearchAddress + expression);
+        //properties setting could be moved to constructor, which would allow language choice during object creation in
+        //MovieApplication by providing an argument in command line; I guess dtoConverter could be moved there as well
+        PropertiesLoader.setPropertiesFile("app.properties");
+        final String movieExpressionSearchAddress = PropertiesLoader.getProperty("movieExpressionSearchAddress");
+        final String apiKey = PropertiesLoader.getProperty("apiKey");
+        URL expressionURL = new URL(movieExpressionSearchAddress + apiKey + "/" + expression);
         reader = new InputStreamReader(expressionURL.openStream());
         SearchResult searchResult = new Gson().fromJson(reader, SearchResult.class);
         List<SearchResultTitleDTO> searchResultTitles = new ArrayList<>();
@@ -41,7 +43,10 @@ public class IMDBService implements MovieService {
 
     @Override
     public MovieDTO findById(String id) throws IOException {
-        URL titleURL = new URL(movieTitleSearchAddress + id);
+        PropertiesLoader.setPropertiesFile("app.properties");
+        final String movieTitleSearchAddress = PropertiesLoader.getProperty("movieTitleSearchAddress");
+        final String apiKey = PropertiesLoader.getProperty("apiKey");
+        URL titleURL = new URL(movieTitleSearchAddress + apiKey + "/" + id);
         reader = new InputStreamReader(titleURL.openStream());
         Movie movieTitle = new Gson().fromJson(reader, Movie.class);
         movieDTOConverter = new MovieDTOConverter();

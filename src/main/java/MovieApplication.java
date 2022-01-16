@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class MovieApplication {
-    //TODO: language choice (could be connected wtih properties)
+    //TODO: language choice (could be connected with properties)
     //TODO: exceptions
     public static void main(String[] args) {
         String[] searchExpressions;
@@ -18,7 +18,6 @@ public class MovieApplication {
             path = args[0];
             searchExpressions = new String[args.length-1];
             System.arraycopy(args, 1, searchExpressions, 0, args.length-1);
-
         } else throw new IllegalArgumentException("No arguments provided");
 
         MovieService movieService = new IMDBService();
